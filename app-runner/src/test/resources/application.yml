@@ -1,0 +1,7 @@
+spring.temporal:
+  test-server:
+    enabled: true # you can specify a custom namespace that you are using
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
