@@ -19,6 +19,16 @@ cd app-runner
 mvn clean install
 
 
+cd $HOME
+cd workflows/workflow1
+mvn clean install
+
+
+cd $HOME
+cd workers/worker1
+mvn clean install
+
+
 endDateTime=`date +%s`
 spentSeconds=`expr $endDateTime - $startDateTime`
 echo

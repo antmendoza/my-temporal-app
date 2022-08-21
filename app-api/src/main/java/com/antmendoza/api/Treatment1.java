@@ -12,6 +12,7 @@ public interface Treatment1 {
     @WorkflowMethod
     String start(PatientDTO patient);
 
+
     @SignalMethod
-    void patientContacted();
+    void completeTask(String taskId);
 }

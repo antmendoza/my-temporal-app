@@ -41,8 +41,8 @@ public class Treatment1Test {
 
         testWorkflowRule.getWorker().registerActivitiesImplementations(new Treatment1ActivityImpl(new CreateTaskService() {
             @Override
-            public String execute() {
-                return null;
+            public TaskId execute(String taskName) {
+                return new TaskId("taskId_2");
             }
         }));
         testWorkflowRule.getTestEnvironment().start();
@@ -53,13 +53,11 @@ public class Treatment1Test {
                         .newWorkflowStub(
                                 Treatment1.class,
                                 WorkflowOptions.newBuilder()
-                                        .setWorkflowRunTimeout(Duration.ofSeconds(2))
+                                        .setWorkflowRunTimeout(Duration.ofSeconds(20))
                                         .setTaskQueue(testWorkflowRule.getTaskQueue()).build());
 
-
         WorkflowClient.execute(workflow::start, new PatientDTO());
-        workflow.patientContacted();
-
+        workflow.completeTask("taskId_2");
         assertEquals("Hello World!", WorkflowStub.fromTyped(workflow).getResult(String.class));
 
     }

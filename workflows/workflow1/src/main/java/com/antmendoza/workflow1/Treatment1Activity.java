@@ -6,5 +6,5 @@ import io.temporal.activity.ActivityMethod;
 @ActivityInterface
 public interface Treatment1Activity {
     @ActivityMethod
-    String contactPatient();
+    CreateTaskResponse createTask(String taskName);
 }

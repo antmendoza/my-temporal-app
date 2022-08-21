@@ -49,4 +49,25 @@ public class TemporalTreatmentRepository implements TreatmentRepository {
         throw new RuntimeException("Workflow case not implemented " + treatmentId);
 
     }
+
+    @Override
+    public void completeTask(CompleteTaskRequest completeTaskRequest) {
+
+
+        String workflowId = completeTaskRequest.buildWorkflowId();
+        final WorkflowOptions workflowOptions =
+                WorkflowOptions.newBuilder()
+                        .setWorkflowId(workflowId)
+                        .setTaskQueue(task_queue)
+                        .build();
+
+        final WorkflowStub workflow =
+                workflowClient.newUntypedWorkflowStub(workflowId);
+
+        workflow.signal("completeTask", completeTaskRequest.taskId());
+        //final WorkflowExecution execution = workflow.signal("");
+
+
+
+    }
 }

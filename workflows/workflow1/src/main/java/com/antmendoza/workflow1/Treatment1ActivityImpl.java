@@ -12,8 +12,8 @@ public class Treatment1ActivityImpl implements Treatment1Activity {
     }
 
     @Override
-    public String contactPatient() {
-        return createTaskService.execute();
+    public CreateTaskResponse createTask(String taskName) {
+        return new CreateTaskResponse(createTaskService.execute(taskName).taskId());
     }
 
 }
