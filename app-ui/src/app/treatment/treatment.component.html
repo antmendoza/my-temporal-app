@@ -1,0 +1,33 @@
+<div class="login-form-flex">
+
+    <mat-card>
+      <mat-card-title>
+        New xxx
+      </mat-card-title>
+      <mat-card-content>
+        <div class="form-field">
+          <label for="patientId">Patient Id: </label>
+          <input id="patientId" type="text" [formControl]="patientId">
+        </div>
+        <div class="form-field">
+          <div class="form-field">
+            <label for="treatment">Treatment: </label>
+            <select id="treatment" [formControl]="treatment">
+              <option value="Treatment1">Treatment1</option>
+            </select>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <div class="button-flex-container">
+          <button mat-raised-button color="primary"
+                  (click)="enroll()">Start
+          </button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+
+</div>
+
+
+
