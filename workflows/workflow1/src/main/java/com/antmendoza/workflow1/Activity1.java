@@ -4,7 +4,10 @@ import io.temporal.activity.ActivityInterface;
 import io.temporal.activity.ActivityMethod;
 
 @ActivityInterface
-public interface Treatment1Activity {
+public interface Activity1 {
     @ActivityMethod
     CreateTaskResponse createTask(String taskName);
+
+    @ActivityMethod
+    void completeTask(String taskId);
 }

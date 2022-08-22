@@ -1,4 +1,4 @@
-package com.antmendoza.temporal.application.config;
+package com.antmendoza.temporal.infrastructure.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

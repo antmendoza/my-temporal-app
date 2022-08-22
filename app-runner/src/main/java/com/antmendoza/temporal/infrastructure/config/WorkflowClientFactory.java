@@ -1,4 +1,4 @@
-package com.antmendoza.temporal.application.config;
+package com.antmendoza.temporal.infrastructure.config;
 
 import io.temporal.client.WorkflowClient;
 import io.temporal.serviceclient.WorkflowServiceStubs;

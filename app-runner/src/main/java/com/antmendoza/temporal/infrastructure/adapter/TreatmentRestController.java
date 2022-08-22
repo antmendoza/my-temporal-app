@@ -1,8 +1,8 @@
 package com.antmendoza.temporal.infrastructure.adapter;
 
-import com.antmendoza.temporal.service.CompleteTask;
-import com.antmendoza.temporal.service.CreateTreatment;
-import com.antmendoza.temporal.service.CreateTreatmentRequest;
+import com.antmendoza.temporal.application.service.CompleteTask;
+import com.antmendoza.temporal.application.service.CreateTreatment;
+import com.antmendoza.temporal.application.service.CreateTreatmentRequest;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

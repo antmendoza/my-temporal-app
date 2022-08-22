@@ -2,7 +2,7 @@ package com.antmendoza.temporal.infrastructure.adapter;
 
 import com.antmendoza.api.PatientDTO;
 import com.antmendoza.temporal.domain.TreatmentRepository;
-import com.antmendoza.temporal.service.CreateTreatmentRequest;
+import com.antmendoza.temporal.application.service.CreateTreatmentRequest;
 import io.temporal.api.common.v1.WorkflowExecution;
 import io.temporal.client.WorkflowClient;
 import io.temporal.client.WorkflowOptions;

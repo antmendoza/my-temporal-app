@@ -1,8 +1,8 @@
 package com.antmendoza.api;
 
 
-import com.antmendoza.workflow1.Treatment1ActivityImpl;
-import com.antmendoza.workflow1.Treatment1Impl;
+import com.antmendoza.workflow1.Activity1Impl;
+import com.antmendoza.workflow1.Workflow1Impl;
 import io.temporal.client.WorkflowClient;
 import io.temporal.client.WorkflowOptions;
 import io.temporal.client.WorkflowStub;
@@ -16,18 +16,16 @@ import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.assertEquals;
 
-public class Treatment1Test {
+public class Workflow1Test {
 
 
 
     @Rule
     public TestWorkflowRule testWorkflowRule =
             TestWorkflowRule.newBuilder()
-                    .setWorkflowTypes(Treatment1Impl.class)
+                    .setWorkflowTypes(Workflow1Impl.class)
                     .setDoNotStart(true)
                     .build();
-
-
 
 
     @After
@@ -39,19 +37,24 @@ public class Treatment1Test {
     @Test
     public void testActivityImpl() throws ExecutionException, InterruptedException {
 
-        testWorkflowRule.getWorker().registerActivitiesImplementations(new Treatment1ActivityImpl(new CreateTaskService() {
+        testWorkflowRule.getWorker().registerActivitiesImplementations(new Activity1Impl(new CreateTaskService() {
             @Override
             public TaskId execute(String taskName) {
                 return new TaskId("taskId_2");
             }
+        }, new CompleteTaskService() {
+            @Override
+            public void execute(String taskName) {
+            }
         }));
+
         testWorkflowRule.getTestEnvironment().start();
 
-        final Treatment1 workflow =
+        final Workflow1 workflow =
                 testWorkflowRule
                         .getWorkflowClient()
                         .newWorkflowStub(
-                                Treatment1.class,
+                                Workflow1.class,
                                 WorkflowOptions.newBuilder()
                                         .setWorkflowRunTimeout(Duration.ofSeconds(20))
                                         .setTaskQueue(testWorkflowRule.getTaskQueue()).build());

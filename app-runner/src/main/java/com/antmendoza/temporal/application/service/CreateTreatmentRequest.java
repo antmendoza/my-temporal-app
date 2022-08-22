@@ -1,4 +1,4 @@
-package com.antmendoza.temporal.service;
+package com.antmendoza.temporal.application.service;
 
 public record CreateTreatmentRequest(String patientId, String treatmentId) {
     public String buildWorkflowId() {

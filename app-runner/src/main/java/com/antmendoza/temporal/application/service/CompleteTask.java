@@ -1,4 +1,4 @@
-package com.antmendoza.temporal.service;
+package com.antmendoza.temporal.application.service;
 
 import com.antmendoza.temporal.domain.TreatmentRepository;
 import com.antmendoza.temporal.infrastructure.adapter.CompleteTaskRequest;
