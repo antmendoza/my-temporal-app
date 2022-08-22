@@ -1,8 +1,8 @@
 package com.antmendoza.temporal.infrastructure.adapter;
 
 import com.antmendoza.api.PatientDTO;
-import com.antmendoza.temporal.domain.TreatmentRepository;
 import com.antmendoza.temporal.application.service.CreateTreatmentRequest;
+import com.antmendoza.temporal.domain.TreatmentRepository;
 import io.temporal.api.common.v1.WorkflowExecution;
 import io.temporal.client.WorkflowClient;
 import io.temporal.client.WorkflowOptions;
@@ -53,21 +53,12 @@ public class TemporalTreatmentRepository implements TreatmentRepository {
     @Override
     public void completeTask(CompleteTaskRequest completeTaskRequest) {
 
-
-        String workflowId = completeTaskRequest.buildWorkflowId();
-        final WorkflowOptions workflowOptions =
-                WorkflowOptions.newBuilder()
-                        .setWorkflowId(workflowId)
-                        .setTaskQueue(task_queue)
-                        .build();
+        final String workflowId = completeTaskRequest.buildWorkflowId();
 
         final WorkflowStub workflow =
                 workflowClient.newUntypedWorkflowStub(workflowId);
 
         workflow.signal("completeTask", completeTaskRequest.taskId());
-        //final WorkflowExecution execution = workflow.signal("");
-
-
 
     }
 }
