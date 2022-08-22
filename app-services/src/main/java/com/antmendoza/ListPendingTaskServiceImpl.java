@@ -27,7 +27,12 @@ public class ListPendingTaskServiceImpl implements ListPendingTaskService {
             MongoCursor<Document> itResult = result.iterator();
             while (itResult.hasNext()) {
                 Document t = itResult.next();
-                taskResult.add(new Task(t.get("_id").toString(), (String) t.get("status"), (String) t.get("name")));
+                taskResult.add(new Task(t.get("_id").toString(),
+                                (String) t.get("status"),
+                                (String) t.get("name"),
+                                (String) t.get("processBusinessKey")
+                        )
+                );
             }
 
             return taskResult;

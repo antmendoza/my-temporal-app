@@ -16,6 +16,7 @@ import {MatCardModule} from "@angular/material/card";
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { TasksComponent } from './tasks/tasks.component';
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   declarations: [
@@ -23,21 +24,22 @@ import { TasksComponent } from './tasks/tasks.component';
     TreatmentComponent,
     TasksComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatListModule,
-    MatButtonModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatCardModule,
-    ReactiveFormsModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatListModule,
+        MatButtonModule,
+        MatIconModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatCardModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MatTableModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

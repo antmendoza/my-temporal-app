@@ -22,7 +22,7 @@ class TreatmentRestControllerTest {
   @Test
   public void test() {
     final String response = treatmentRestController.startTreatment("patientId",
-            new StartTreatmentRequest("Treatment1"));
+            new StartTreatmentRequest("Workflow1"));
     Assert.assertNotNull(response);
   }
 }

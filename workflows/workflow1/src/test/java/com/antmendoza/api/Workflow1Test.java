@@ -19,7 +19,6 @@ import static org.junit.Assert.assertEquals;
 public class Workflow1Test {
 
 
-
     @Rule
     public TestWorkflowRule testWorkflowRule =
             TestWorkflowRule.newBuilder()
@@ -38,8 +37,9 @@ public class Workflow1Test {
     public void testActivityImpl() throws ExecutionException, InterruptedException {
 
         testWorkflowRule.getWorker().registerActivitiesImplementations(new Activity1Impl(new CreateTaskService() {
+
             @Override
-            public TaskId execute(String taskName) {
+            public TaskId execute(CreateTask createTask) {
                 return new TaskId("taskId_2");
             }
         }, new CompleteTaskService() {

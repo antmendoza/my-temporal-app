@@ -2,6 +2,7 @@ package com.antmendoza.workflow1;
 
 
 import com.antmendoza.api.CompleteTaskService;
+import com.antmendoza.api.CreateTask;
 import com.antmendoza.api.CreateTaskService;
 
 public class Activity1Impl implements Activity1 {
@@ -16,8 +17,8 @@ public class Activity1Impl implements Activity1 {
     }
 
     @Override
-    public CreateTaskResponse createTask(String taskName) {
-        return new CreateTaskResponse(createTaskService.execute(taskName).taskId());
+    public CreateTaskResponse createTask(CreateTask createTask) {
+        return new CreateTaskResponse(createTaskService.execute(createTask).taskId());
     }
 
     @Override

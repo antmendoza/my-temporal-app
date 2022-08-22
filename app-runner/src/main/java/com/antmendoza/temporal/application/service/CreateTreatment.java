@@ -1,14 +1,14 @@
 package com.antmendoza.temporal.application.service;
 
-import com.antmendoza.temporal.domain.TreatmentRepository;
+import com.antmendoza.temporal.domain.WorkflowRepository;
 import org.springframework.stereotype.Component;
 
 @Component
 public class CreateTreatment {
 
-  private final TreatmentRepository treatmentRepository;
+  private final WorkflowRepository treatmentRepository;
 
-  public CreateTreatment(TreatmentRepository treatmentRepository) {
+  public CreateTreatment(WorkflowRepository treatmentRepository) {
     this.treatmentRepository = treatmentRepository;
   }
 

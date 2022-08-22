@@ -7,17 +7,19 @@ interface UserTask {
   id: string;
 }
 
+
+
+
+
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
   styleUrls: ['./tasks.component.css']
 })
-
-
 export class TasksComponent implements OnInit {
 
-
   tasks: UserTask[] = [];
+  displayedColumns: string[] = ['id', 'name', 'status', 'action'];
 
   constructor(private http: HttpClient) {
   }
@@ -37,8 +39,8 @@ export class TasksComponent implements OnInit {
   }
 
   completeTask(id: string) {
-    const url = 'http://localhost:8090/tasks/';
-    this.http.get<any>(url).subscribe({
+    const url = 'http://localhost:8090/tasks/'+id;
+    this.http.post<any>(url, {}).subscribe({
       next: data => {
         console.info('Response: ', data);
         this.tasks = data.tasks;

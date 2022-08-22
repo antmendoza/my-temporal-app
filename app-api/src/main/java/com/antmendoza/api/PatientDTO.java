@@ -6,19 +6,12 @@ public class PatientDTO implements Serializable {
 
     private String patientId;
 
-    public PatientDTO(){
+    public PatientDTO() {
     }
 
-
-    public PatientDTO(String patientId){
+    public PatientDTO(String patientId) {
 
         this.patientId = patientId;
     }
 
-
-
-
-    public String getPatientId() {
-        return patientId;
-    }
 }

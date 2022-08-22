@@ -1,5 +1,6 @@
 package com.antmendoza.workflow1;
 
+import com.antmendoza.api.CreateTask;
 import com.antmendoza.api.PatientDTO;
 import com.antmendoza.api.Workflow1;
 import io.temporal.activity.ActivityOptions;
@@ -22,7 +23,12 @@ public class Workflow1Impl implements Workflow1 {
     @Override
     public String start(PatientDTO patient) {
 
-        final CreateTaskResponse createTaskResponse = activity.createTask("Contact patient");
+
+        final CreateTaskResponse createTaskResponse = activity.createTask(
+                new CreateTask("Contact patient",
+                        Workflow.getInfo().getWorkflowId())
+
+        );
         Workflow.await(() -> this.taskCompleted.contains(createTaskResponse.taskId()));
 
         return "completed";
