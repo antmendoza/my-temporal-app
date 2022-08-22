@@ -61,7 +61,7 @@ public class Workflow1Test {
 
         WorkflowClient.execute(workflow::start, new PatientDTO());
         workflow.completeTask("taskId_2");
-        assertEquals("Hello World!", WorkflowStub.fromTyped(workflow).getResult(String.class));
+        assertEquals("completed", WorkflowStub.fromTyped(workflow).getResult(String.class));
 
     }
 

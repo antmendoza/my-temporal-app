@@ -1,0 +1,17 @@
+<table>
+  <thead>
+  <th>Id</th>
+  <th>Name</th>
+  <th>Status</th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let task of tasks">
+    <td>{{task.id}}</td>
+    <td>{{task.name}}</td>
+    <td>{{task.status}}</td>
+    <td><button mat-raised-button color="primary"
+                (click)="completeTask(task.id)">Start
+    </button></td>
+  </tr>
+  </tbody>
+</table>

@@ -25,7 +25,7 @@ public class Workflow1Impl implements Workflow1 {
         final CreateTaskResponse createTaskResponse = activity.createTask("Contact patient");
         Workflow.await(() -> this.taskCompleted.contains(createTaskResponse.taskId()));
 
-        return "Hello World!";
+        return "completed";
     }
 
 

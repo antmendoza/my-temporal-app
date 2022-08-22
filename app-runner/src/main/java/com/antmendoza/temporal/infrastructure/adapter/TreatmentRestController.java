@@ -1,6 +1,5 @@
 package com.antmendoza.temporal.infrastructure.adapter;
 
-import com.antmendoza.temporal.application.service.CompleteTask;
 import com.antmendoza.temporal.application.service.CreateTreatment;
 import com.antmendoza.temporal.application.service.CreateTreatmentRequest;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,11 +12,9 @@ public class TreatmentRestController {
 
     private final CreateTreatment createTreatment;
 
-    private final CompleteTask completeTask;
 
-    public TreatmentRestController(CreateTreatment createTreatment, CompleteTask completeTask) {
+    public TreatmentRestController(CreateTreatment createTreatment) {
         this.createTreatment = createTreatment;
-        this.completeTask = completeTask;
     }
 
     @PostMapping("/patients/{patientId}/treatments")
@@ -26,14 +23,6 @@ public class TreatmentRestController {
             @RequestBody StartTreatmentRequest startTreatmentRequest) {
 
         return this.createTreatment.execute(new CreateTreatmentRequest(patientId, startTreatmentRequest.treatmentId()));
-    }
-
-    @PostMapping("/complete-task")
-    public void startTreatment(
-            @RequestBody CompleteTaskRequest completeTaskRequest) {
-
-        this.completeTask.execute(completeTaskRequest);
-
     }
 
 }

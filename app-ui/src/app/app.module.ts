@@ -15,11 +15,13 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatCardModule} from "@angular/material/card";
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { TasksComponent } from './tasks/tasks.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TreatmentComponent
+    TreatmentComponent,
+    TasksComponent
   ],
   imports: [
     BrowserModule,

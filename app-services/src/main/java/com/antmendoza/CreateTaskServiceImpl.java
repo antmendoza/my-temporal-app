@@ -12,10 +12,6 @@ import java.util.Map;
 public class CreateTaskServiceImpl implements CreateTaskService {
 
 
-    public static void main(String[] args) {
-        new CreateTaskServiceImpl().execute("any task");
-    }
-
     @Override
     public TaskId execute(String taskName) {
 
@@ -23,7 +19,7 @@ public class CreateTaskServiceImpl implements CreateTaskService {
 
             final MongoCollection<Document> collection = connection.collection();
             final Document tDocument = new Document(Map.of(
-                    "taskName", taskName,
+                    "name", taskName,
                     "status", "PENDING"));
             collection.insertOne(tDocument);
             final ObjectId id = (ObjectId) tDocument.get("_id");

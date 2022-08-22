@@ -10,10 +10,6 @@ import org.bson.types.ObjectId;
 
 public class CompleteTaskServiceImpl implements CompleteTaskService {
 
-    public static void main(String[] args) {
-        new CompleteTaskServiceImpl().execute("630335fb52cfad74a034c062");
-    }
-
     @Override
     public void execute(String id) {
         try (final MongoConnection connection = new MongoConnection()) {
