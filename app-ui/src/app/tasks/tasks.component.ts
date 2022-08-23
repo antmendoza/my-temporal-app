@@ -8,9 +8,6 @@ interface UserTask {
 }
 
 
-
-
-
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
@@ -23,11 +20,14 @@ export class TasksComponent implements OnInit {
 
   constructor(private http: HttpClient) {
   }
+  private url = 'http://localhost:8090/tasks';
 
   ngOnInit(): void {
+    this.loadTasks();
+  }
 
-    const url = 'http://localhost:8090/tasks';
-    this.http.get<any>(url).subscribe({
+  private loadTasks() {
+    this.http.get<any>(this.url).subscribe({
       next: data => {
         console.info('Response: ', data);
         this.tasks = data.tasks;
@@ -39,11 +39,11 @@ export class TasksComponent implements OnInit {
   }
 
   completeTask(id: string) {
-    const url = 'http://localhost:8090/tasks/'+id;
+    const url = this.url+"/"+id;
     this.http.post<any>(url, {}).subscribe({
       next: data => {
         console.info('Response: ', data);
-        this.tasks = data.tasks;
+        setTimeout(() => this.loadTasks(), 1000);
       },
       error: error => {
         console.error('There was an error!', error);

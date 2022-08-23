@@ -17,7 +17,7 @@ public class TreatmentRestController {
         this.createTreatment = createTreatment;
     }
 
-    @PostMapping("/patients/{patientId}/treatments")
+    @PostMapping("/patients/{patientId}/workflows")
     public String startTreatment(
             @PathVariable(name = "patientId") String patientId,
             @RequestBody StartTreatmentRequest startTreatmentRequest) {

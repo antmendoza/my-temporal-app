@@ -1,7 +1,7 @@
 package com.antmendoza.temporal.application.service;
 
 import com.antmendoza.api.ListPendingTaskService;
-import com.antmendoza.api.Task;
+import com.antmendoza.api.UserTask;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -16,7 +16,7 @@ public class ListPendingTask {
     }
 
 
-    public List<Task> execute() {
+    public List<UserTask> execute() {
         return listPendingTaskService.execute();
     }
 }

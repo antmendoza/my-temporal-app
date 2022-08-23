@@ -5,12 +5,13 @@ import io.temporal.workflow.WorkflowInterface;
 import io.temporal.workflow.WorkflowMethod;
 
 @WorkflowInterface
-public interface Workflow1 {
+public interface WorkflowChild {
 
 
 
     @WorkflowMethod
-    String start();
+    String start(String taskName);
 
-
+    @SignalMethod
+    void completeTask(String taskId);
 }

@@ -4,6 +4,7 @@ import com.antmendoza.CompleteTaskServiceImpl;
 import com.antmendoza.CreateTaskServiceImpl;
 import com.antmendoza.workflow1.Activity1Impl;
 import com.antmendoza.workflow1.Workflow1Impl;
+import com.antmendoza.workflow1.WorkflowChildImpl;
 import io.temporal.client.WorkflowClient;
 import io.temporal.serviceclient.WorkflowServiceStubs;
 import io.temporal.worker.WorkerFactory;
@@ -19,7 +20,7 @@ public class AppWorker {
 
         io.temporal.worker.Worker worker = factory.newWorker("task_queue");
         
-        worker.registerWorkflowImplementationTypes(Workflow1Impl.class);
+        worker.registerWorkflowImplementationTypes(Workflow1Impl.class, WorkflowChildImpl.class);
         worker.registerActivitiesImplementations(new Activity1Impl(new CreateTaskServiceImpl(), new CompleteTaskServiceImpl()));
 
         factory.start();

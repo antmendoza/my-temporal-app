@@ -1,43 +1,28 @@
 package com.antmendoza.workflow1;
 
-import com.antmendoza.api.CreateTask;
-import com.antmendoza.api.PatientDTO;
 import com.antmendoza.api.Workflow1;
-import io.temporal.activity.ActivityOptions;
+import com.antmendoza.api.WorkflowChild;
 import io.temporal.workflow.Workflow;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static java.time.Duration.ofSeconds;
 
 public class Workflow1Impl implements Workflow1 {
 
 
-    private final Activity1 activity = Workflow.newActivityStub(Activity1.class,
-            ActivityOptions.newBuilder()
-                    .setStartToCloseTimeout(ofSeconds(2)).build());
-    private final List<String> taskCompleted = new ArrayList<>();
-
+    WorkflowChild child = Workflow.newChildWorkflowStub(WorkflowChild.class);
 
     @Override
-    public String start(PatientDTO patient) {
+    public String start() {
 
+        child.start("Create task");
 
-        final CreateTaskResponse createTaskResponse = activity.createTask(
-                new CreateTask("Contact patient",
-                        Workflow.getInfo().getWorkflowId())
+        child.start("Create task1");
 
-        );
-        Workflow.await(() -> this.taskCompleted.contains(createTaskResponse.taskId()));
+        child.start("Create task2");
+
+        child.start("Create task3");
 
         return "completed";
     }
 
 
-    @Override
-    public void completeTask(String taskId) {
-        activity.completeTask(taskId);
-        this.taskCompleted.add(taskId);
-    }
+
 }

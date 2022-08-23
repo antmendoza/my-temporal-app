@@ -1,7 +1,7 @@
 package com.antmendoza;
 
 import com.antmendoza.api.ListPendingTaskService;
-import com.antmendoza.api.Task;
+import com.antmendoza.api.UserTask;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
@@ -15,11 +15,11 @@ public class ListPendingTaskServiceImpl implements ListPendingTaskService {
 
 
     @Override
-    public List<Task> execute() {
+    public List<UserTask> execute() {
 
         try (final MongoConnection connection = new MongoConnection()) {
 
-            List<Task> taskResult = new ArrayList();
+            List<UserTask> userTaskResult = new ArrayList();
 
             final MongoCollection<Document> collection = connection.collection();
 
@@ -27,7 +27,7 @@ public class ListPendingTaskServiceImpl implements ListPendingTaskService {
             MongoCursor<Document> itResult = result.iterator();
             while (itResult.hasNext()) {
                 Document t = itResult.next();
-                taskResult.add(new Task(t.get("_id").toString(),
+                userTaskResult.add(new UserTask(t.get("_id").toString(),
                                 (String) t.get("status"),
                                 (String) t.get("name"),
                                 (String) t.get("processBusinessKey")
@@ -35,7 +35,7 @@ public class ListPendingTaskServiceImpl implements ListPendingTaskService {
                 );
             }
 
-            return taskResult;
+            return userTaskResult;
 
         }
 
