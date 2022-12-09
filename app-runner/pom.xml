@@ -17,7 +17,7 @@
         <java.version>18</java.version>
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
-        <temporal.version>1.15.1</temporal.version>
+        <temporal.version>1.16.0</temporal.version>
     </properties>
     <dependencies>
         <dependency>
@@ -29,6 +29,13 @@
         <dependency>
             <groupId>io.temporal</groupId>
             <artifactId>temporal-spring-boot-starter-alpha</artifactId>
+            <version>${temporal.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>io.temporal</groupId>
+            <artifactId>temporal-spring-boot-autoconfigure-alpha</artifactId>
             <version>${temporal.version}</version>
         </dependency>
 

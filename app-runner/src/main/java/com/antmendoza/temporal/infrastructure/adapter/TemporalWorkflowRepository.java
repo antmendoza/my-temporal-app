@@ -13,12 +13,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class TemporalWorkflowRepository implements WorkflowRepository {
 
-    private final WorkflowClient workflowClient;
+    private final WorkflowClient temporalWorkflowClient;
     @Value("task_queue")
     private String task_queue;
 
-    public TemporalWorkflowRepository(WorkflowClient workflowClient) {
-        this.workflowClient = workflowClient;
+    public TemporalWorkflowRepository(WorkflowClient temporalWorkflowClient) {
+        this.temporalWorkflowClient = temporalWorkflowClient;
     }
 
     @Override
@@ -35,7 +35,7 @@ public class TemporalWorkflowRepository implements WorkflowRepository {
                             .build();
 
             final WorkflowStub workflow =
-                    workflowClient.newUntypedWorkflowStub(treatmentId, workflowOptions);
+                    temporalWorkflowClient.newUntypedWorkflowStub(treatmentId, workflowOptions);
 
             final WorkflowExecution execution = workflow.start(new PatientDTO(createTreatmentRequest.patientId()));
 
@@ -53,7 +53,7 @@ public class TemporalWorkflowRepository implements WorkflowRepository {
         final String workflowId = completeTaskRequest.processBusinessKey();
 
         final WorkflowStub workflow =
-                workflowClient.newUntypedWorkflowStub(workflowId);
+                temporalWorkflowClient.newUntypedWorkflowStub(workflowId);
 
         workflow.signal("completeTask", completeTaskRequest.taskId());
 

@@ -1,9 +1,8 @@
 server:
     port: 8090
 
-
 spring.temporal:
-  connection:
-    target: local # you can specify a host:port here for a remote connection
-    # enable-https: true
-    # namespace: default # you can specify a custom namespace that you are using
+    connection:
+      target: local # you can specify a host:port here for a remote connection
+      # enable-https: true
+      #namespace: default # you can specify a custom namespace that you are using

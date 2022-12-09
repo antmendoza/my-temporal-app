@@ -17,7 +17,7 @@
         <java.version>18</java.version>
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
-        <temporal.version>1.15.1</temporal.version>
+        <temporal.version>1.16.0</temporal.version>
         <my-temporal-app.version>0.0.1-SNAPSHOT</my-temporal-app.version>
     </properties>
     <dependencies>
@@ -38,6 +38,12 @@
             <artifactId>workflow1</artifactId>
             <version>${my-temporal-app.version}</version>
         </dependency>
+
+        <!--dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-services</artifactId>
+            <version>1.48.1</version>
+        </dependency-->
 
 
     </dependencies>

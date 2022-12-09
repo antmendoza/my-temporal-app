@@ -13,8 +13,8 @@ import org.springframework.context.annotation.Primary;
 @TestConfiguration
 public class TestWorkflowClientFactory {
 
-  @Primary
-  @Bean("workflowClient")
+  //@Primary
+  //@Bean("workflowClient")
   public WorkflowClient workflowClient() {
 
     final WorkflowStub workflowStub = Mockito.mock(WorkflowStub.class);
